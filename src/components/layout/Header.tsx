@@ -13,9 +13,13 @@ const Header = () => {
   const location = useLocation();
 
   const isActive = (path: string) => {
-    if (path === "/") return location.pathname === "/";
-    if (path.startsWith("/#")) return location.pathname === "/" && location.hash === path.slice(1);
-    return location.pathname === path || location.pathname.startsWith(path);
+    if (path === "/") {
+      return location.pathname === "/" && !location.hash;
+    }
+    if (path.startsWith("/#")) {
+      return location.pathname === "/" && location.hash === path.slice(1);
+    }
+    return location.pathname === path;
   };
 
   return (
