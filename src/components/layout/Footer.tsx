@@ -3,7 +3,7 @@ import { FileDown } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer id="contact" className="border-t border-border/50 bg-muted/30 scroll-mt-20">
+    <footer className="border-t border-border/50 bg-muted/30">
       <div className="container mx-auto max-w-5xl px-6 py-12">
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           <div className="flex items-center gap-2">

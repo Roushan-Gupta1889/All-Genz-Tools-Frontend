@@ -4,6 +4,7 @@ import BrandHero from "@/components/home/BrandHero";
 import BrandValues from "@/components/home/BrandValues";
 import BrandMission from "@/components/home/BrandMission";
 import ToolsShowcase from "@/components/home/ToolsShowcase";
+import ContactSection from "@/components/home/ContactSection";
 import BrandCTA from "@/components/home/BrandCTA";
 
 const Index = () => {
@@ -15,6 +16,7 @@ const Index = () => {
         <BrandValues />
         <BrandMission />
         <ToolsShowcase />
+        <ContactSection />
         <BrandCTA />
       </main>
       <Footer />
