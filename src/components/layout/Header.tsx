@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FileDown } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -65,8 +66,10 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* Right side spacer for balance */}
-        <div className="hidden md:block w-[140px]" />
+        {/* Theme Toggle */}
+        <div className="flex items-center justify-end w-[140px]">
+          <ThemeToggle />
+        </div>
       </div>
     </motion.header>
   );
