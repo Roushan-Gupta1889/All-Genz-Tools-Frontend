@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, FileDown, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroIllustration from "@/assets/hero-illustration.png";
+import heroIllustration from "@/assets/hero-illustration.jpg";
 
 const stats = [
   { value: "100%", label: "Free to Use" },
