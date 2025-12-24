@@ -4,7 +4,7 @@ import { FileDown } from "lucide-react";
 
 const navLinks = [
   { name: "Home", path: "/" },
-  { name: "Tools", path: "/pdf-compressor" },
+  { name: "Tools", path: "/#tools" },
   { name: "About", path: "/#about" },
   { name: "Contact", path: "/#contact" },
 ];
