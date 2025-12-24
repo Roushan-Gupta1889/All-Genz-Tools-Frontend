@@ -16,7 +16,7 @@ const BrandHero = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.08),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(var(--primary)/0.05),transparent_40%)]" />
       
-      <div className="container relative mx-auto max-w-6xl px-6 py-20 sm:py-28 lg:py-32">
+      <div className="container relative mx-auto max-w-6xl px-6 py-12 sm:py-16 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left - Content */}
           <motion.div
