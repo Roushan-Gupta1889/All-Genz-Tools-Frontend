@@ -16,7 +16,7 @@ const BrandHero = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.08),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(var(--primary)/0.05),transparent_40%)]" />
       
-      <div className="container relative mx-auto max-w-6xl px-6 py-12 sm:py-16 lg:py-20">
+      <div className="container relative mx-auto max-w-6xl px-6 py-8 sm:py-12 lg:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left - Content */}
           <motion.div
@@ -85,7 +85,7 @@ const BrandHero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="mt-12 pt-8 border-t border-border/50"
+              className="mt-8 pt-6 border-t border-border/50"
             >
               <div className="flex items-center justify-center lg:justify-start gap-8 sm:gap-12">
                 {stats.map((stat, index) => (
