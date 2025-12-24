@@ -109,14 +109,22 @@ const BrandHero = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative flex justify-center lg:justify-end"
           >
-            <div className="relative w-full max-w-lg">
+            <motion.div 
+              className="relative w-full max-w-lg"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ 
+                duration: 4, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+            >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/10 to-transparent rounded-3xl blur-3xl" />
               <img
                 src={heroIllustration}
                 alt="Digital tools illustration"
                 className="relative w-full h-auto drop-shadow-2xl"
               />
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
