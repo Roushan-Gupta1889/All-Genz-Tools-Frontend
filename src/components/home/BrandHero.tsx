@@ -12,7 +12,7 @@ const stats = [
 
 const BrandHero = () => {
   return (
-    <section className="relative overflow-hidden gradient-hero">
+    <section className="relative overflow-x-hidden gradient-hero">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.08),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(var(--primary)/0.05),transparent_40%)]" />
       
@@ -110,19 +110,19 @@ const BrandHero = () => {
             className="relative flex justify-center lg:justify-end"
           >
             <motion.div 
-              className="relative w-full max-w-lg"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ 
-                duration: 4, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
+              className="relative w-full max-w-md lg:max-w-lg"
+              animate={{ y: [0, -8, 0] }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
               }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/10 to-transparent rounded-3xl blur-3xl" />
               <img
                 src={heroIllustration}
-                alt="Digital tools illustration"
-                className="relative w-full h-auto drop-shadow-2xl"
+                alt="All Genz Tools hero illustration showing digital tools"
+                className="relative mx-auto h-[320px] sm:h-[420px] lg:h-[520px] w-auto max-w-full object-contain drop-shadow-2xl"
               />
             </motion.div>
           </motion.div>
