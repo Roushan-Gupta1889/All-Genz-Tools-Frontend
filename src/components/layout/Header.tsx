@@ -1,11 +1,22 @@
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FileDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
+
+const navLinks = [
+  { name: "Home", path: "/" },
+  { name: "Tools", path: "/pdf-compressor" },
+  { name: "About", path: "/#about" },
+  { name: "Contact", path: "/#contact" },
+];
 
 const Header = () => {
   const location = useLocation();
-  const isHome = location.pathname === "/";
+
+  const isActive = (path: string) => {
+    if (path === "/") return location.pathname === "/";
+    if (path.startsWith("/#")) return location.pathname === "/" && location.hash === path.slice(1);
+    return location.pathname === path || location.pathname.startsWith(path);
+  };
 
   return (
     <motion.header
@@ -14,7 +25,8 @@ const Header = () => {
       transition={{ duration: 0.4, ease: "easeOut" }}
       className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-xl"
     >
-      <div className="container mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
+      <div className="container mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+        {/* Logo */}
         <Link to="/" className="flex items-center gap-2 transition-opacity hover:opacity-80">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
             <FileDown className="h-4 w-4 text-primary-foreground" />
@@ -22,19 +34,35 @@ const Header = () => {
           <span className="text-lg font-semibold tracking-tight">All Genz Tools</span>
         </Link>
 
-        <nav className="flex items-center gap-2">
-          {!isHome && (
-            <Button variant="ghost" size="sm" asChild>
-              <Link to="/">Home</Link>
-            </Button>
-          )}
-          <Button variant={isHome ? "default" : "outline"} size="sm" asChild>
-            <Link to="/pdf-compressor">
-              <FileDown className="h-4 w-4" />
-              Compress PDF
+        {/* Center Navigation */}
+        <nav className="hidden md:flex items-center gap-1 rounded-full bg-muted/50 p-1">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 ${
+                isActive(link.path)
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
+              }`}
+            >
+              {link.name}
             </Link>
-          </Button>
+          ))}
         </nav>
+
+        {/* Mobile Menu - simplified for now */}
+        <div className="md:hidden">
+          <Link
+            to="/pdf-compressor"
+            className="px-4 py-2 text-sm font-medium rounded-full bg-primary text-primary-foreground"
+          >
+            Tools
+          </Link>
+        </div>
+
+        {/* Right side spacer for balance */}
+        <div className="hidden md:block w-[140px]" />
       </div>
     </motion.header>
   );
