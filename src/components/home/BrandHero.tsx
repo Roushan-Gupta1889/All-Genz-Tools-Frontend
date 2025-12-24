@@ -87,17 +87,20 @@ const BrandHero = () => {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="mt-8 pt-6 border-t border-border/50"
             >
-              <div className="flex items-center justify-center lg:justify-start gap-6 sm:gap-10">
+              <div className="grid grid-cols-3 gap-3 sm:flex sm:items-center sm:justify-center lg:justify-start sm:gap-10">
                 {stats.map((stat, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <div
+                    key={index}
+                    className="flex min-w-0 flex-col items-center gap-2 text-center sm:flex-row sm:items-center sm:gap-3 sm:text-left"
+                  >
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
                       <stat.icon className="h-5 w-5" />
                     </div>
-                    <div className="text-left">
-                      <div className="text-xl sm:text-2xl font-bold text-primary">
+                    <div className="min-w-0">
+                      <div className="text-xl font-bold leading-none text-primary sm:text-2xl">
                         {stat.value}
                       </div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="mt-1 text-[11px] leading-tight text-muted-foreground sm:mt-0 sm:text-xs">
                         {stat.label}
                       </div>
                     </div>
