@@ -24,7 +24,7 @@ const values = [
 
 const BrandMission = () => {
   return (
-    <section className="py-24 sm:py-32 bg-muted/30">
+    <section id="about" className="py-24 sm:py-32 bg-muted/30 scroll-mt-20">
       <div className="container mx-auto max-w-5xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

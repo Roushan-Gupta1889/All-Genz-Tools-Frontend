@@ -15,7 +15,7 @@ const tools = [
 
 const ToolsShowcase = () => {
   return (
-    <section className="py-24 sm:py-32 border-t border-border/50">
+    <section id="tools" className="py-24 sm:py-32 border-t border-border/50 scroll-mt-20">
       <div className="container mx-auto max-w-5xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
