@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, FileDown, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import heroIllustration from "@/assets/hero-illustration.png";
 
 const stats = [
   { value: "100%", label: "Free to Use" },
@@ -101,59 +102,20 @@ const BrandHero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right - Illustration Card */}
+          {/* Right - Illustration */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative flex justify-center lg:justify-end"
           >
-            <div className="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-br from-primary/20 via-primary/10 to-transparent border border-border/50 shadow-2xl">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,hsl(var(--primary)/0.15),transparent_60%)]" />
-              
-              {/* Decorative elements */}
-              <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30 flex items-center justify-center">
-                <Zap className="h-6 w-6 text-primary" />
-              </div>
-              
-              {/* Main content */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
-                <div className="w-24 h-24 rounded-2xl bg-primary/20 backdrop-blur-sm border border-primary/30 flex items-center justify-center mb-6">
-                  <FileDown className="h-12 w-12 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">All Genz Tools</h3>
-                <p className="text-muted-foreground text-center text-sm">
-                  Modern utilities for the digital age
-                </p>
-                
-                {/* Tech tags */}
-                <div className="flex flex-wrap gap-2 mt-6 justify-center">
-                  {["PDF", "Privacy", "Fast", "Free"].map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 text-xs rounded-full bg-muted/50 border border-border/50 text-muted-foreground"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Bottom overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background/80 to-transparent">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-semibold text-foreground">Ready to use</p>
-                    <p className="text-xs text-muted-foreground">No signup required</p>
-                  </div>
-                  <Link 
-                    to="#tools" 
-                    className="text-sm text-primary hover:underline flex items-center gap-1"
-                  >
-                    Learn more <ArrowRight className="h-3 w-3" />
-                  </Link>
-                </div>
-              </div>
+            <div className="relative w-full max-w-lg">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/10 to-transparent rounded-3xl blur-3xl" />
+              <img
+                src={heroIllustration}
+                alt="Digital tools illustration"
+                className="relative w-full h-auto drop-shadow-2xl"
+              />
             </div>
           </motion.div>
         </div>
