@@ -136,11 +136,10 @@ const Footer = () => {
         {/* Visitor Counter */}
         <div className="mt-12 flex flex-col items-center gap-2 border-t border-border/50 pt-8">
           <p className="text-xs text-muted-foreground">Total Visitors</p>
-          <a href="https://www.hitwebcounter.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.freevisitorcounters.com/en/home/stats/id/1319187" target="_blank" rel="noopener noreferrer">
             <img 
-              src="https://hitwebcounter.com/counter/counter.php?page=19072909&style=0006&nbdigits=6&type=page&initCount=1000" 
-              title="Counter Widget" 
-              alt="Visit counter For Websites"
+              src="https://www.freevisitorcounters.com/en/counter/render/1319187/t/5" 
+              alt="Visitor Counter"
               className="border-0"
             />
           </a>
