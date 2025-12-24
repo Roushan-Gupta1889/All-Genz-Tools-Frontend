@@ -1,19 +1,21 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import HeroSection from "@/components/home/HeroSection";
-import TrustStrip from "@/components/home/TrustStrip";
-import HowItWorks from "@/components/home/HowItWorks";
-import FinalCTA from "@/components/home/FinalCTA";
+import BrandHero from "@/components/home/BrandHero";
+import BrandValues from "@/components/home/BrandValues";
+import BrandMission from "@/components/home/BrandMission";
+import ToolsShowcase from "@/components/home/ToolsShowcase";
+import BrandCTA from "@/components/home/BrandCTA";
 
 const Index = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
-        <HeroSection />
-        <TrustStrip />
-        <HowItWorks />
-        <FinalCTA />
+        <BrandHero />
+        <BrandValues />
+        <BrandMission />
+        <ToolsShowcase />
+        <BrandCTA />
       </main>
       <Footer />
     </div>

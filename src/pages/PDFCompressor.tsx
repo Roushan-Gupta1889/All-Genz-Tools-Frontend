@@ -3,6 +3,9 @@ import { motion } from "framer-motion";
 import { Shield } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import ToolHero from "@/components/compressor/ToolHero";
+import ToolTrustStrip from "@/components/compressor/ToolTrustStrip";
+import ToolHowItWorks from "@/components/compressor/ToolHowItWorks";
 import UploadCard from "@/components/compressor/UploadCard";
 import CompressionProgress from "@/components/compressor/CompressionProgress";
 import CompressionResult from "@/components/compressor/CompressionResult";
@@ -46,8 +49,6 @@ const PDFCompressor = () => {
   }, [state, file]);
 
   const handleDownload = useCallback(() => {
-    // In a real app, this would download the compressed file
-    // For demo purposes, we'll just show an alert
     if (file) {
       const link = document.createElement("a");
       link.href = URL.createObjectURL(file);
@@ -66,61 +67,61 @@ const PDFCompressor = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      
-      <main className="flex-1 gradient-hero">
-        <div className="container mx-auto max-w-2xl px-6 py-16 sm:py-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center"
-          >
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              PDF Compressor
-            </h1>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Reduce your PDF file size while maintaining quality
-            </p>
-          </motion.div>
 
-          <div className="mt-12">
-            {state === "idle" && (
-              <UploadCard
-                onFileSelect={handleFileSelect}
-                isDragging={isDragging}
-                setIsDragging={setIsDragging}
-              />
-            )}
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden gradient-hero">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.08),transparent_50%)]" />
 
-            {state === "compressing" && file && (
-              <CompressionProgress
-                fileName={file.name}
-                progress={Math.min(Math.round(progress), 99)}
-              />
-            )}
+          <div className="container relative mx-auto max-w-5xl px-6 py-24 sm:py-32">
+            <ToolHero />
 
-            {state === "complete" && file && (
-              <CompressionResult
-                fileName={file.name}
-                originalSize={file.size}
-                compressedSize={compressedSize}
-                onDownload={handleDownload}
-                onReset={handleReset}
-              />
-            )}
+            {/* Tool Section */}
+            <div className="mt-16 max-w-2xl mx-auto">
+              {state === "idle" && (
+                <UploadCard
+                  onFileSelect={handleFileSelect}
+                  isDragging={isDragging}
+                  setIsDragging={setIsDragging}
+                />
+              )}
+
+              {state === "compressing" && file && (
+                <CompressionProgress
+                  fileName={file.name}
+                  progress={Math.min(Math.round(progress), 99)}
+                />
+              )}
+
+              {state === "complete" && file && (
+                <CompressionResult
+                  fileName={file.name}
+                  originalSize={file.size}
+                  compressedSize={compressedSize}
+                  onDownload={handleDownload}
+                  onReset={handleReset}
+                />
+              )}
+            </div>
+
+            {/* Privacy Note */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="mt-12 flex items-center justify-center gap-2 text-sm text-muted-foreground"
+            >
+              <Shield className="h-4 w-4" />
+              <span>Your files are processed locally and never uploaded to our servers</span>
+            </motion.div>
           </div>
+        </section>
 
-          {/* Privacy Note */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="mt-12 flex items-center justify-center gap-2 text-sm text-muted-foreground"
-          >
-            <Shield className="h-4 w-4" />
-            <span>Your files are processed locally and never uploaded to our servers</span>
-          </motion.div>
-        </div>
+        {/* Trust Strip */}
+        <ToolTrustStrip />
+
+        {/* How It Works */}
+        <ToolHowItWorks />
       </main>
 
       <Footer />
