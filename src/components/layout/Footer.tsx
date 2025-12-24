@@ -133,8 +133,21 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Visitor Counter */}
+        <div className="mt-12 flex flex-col items-center gap-2 border-t border-border/50 pt-8">
+          <p className="text-xs text-muted-foreground">Total Visitors</p>
+          <a href="https://www.hitwebcounter.com" target="_blank" rel="noopener noreferrer">
+            <img 
+              src="https://hitwebcounter.com/counter/counter.php?page=19072909&style=0006&nbdigits=6&type=page&initCount=1000" 
+              title="Counter Widget" 
+              alt="Visit counter For Websites"
+              className="border-0"
+            />
+          </a>
+        </div>
+
         {/* Bottom Bar */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border/50 pt-8 sm:flex-row">
+        <div className="mt-6 flex flex-col items-center justify-between gap-4 border-t border-border/50 pt-8 sm:flex-row">
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} All Genz Tools. All rights reserved.
           </p>
