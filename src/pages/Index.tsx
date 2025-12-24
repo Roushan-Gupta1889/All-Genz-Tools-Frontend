@@ -16,8 +16,8 @@ const Index = () => {
         <BrandValues />
         <BrandMission />
         <ToolsShowcase />
-        <ContactSection />
         <BrandCTA />
+        <ContactSection />
       </main>
       <Footer />
     </div>
