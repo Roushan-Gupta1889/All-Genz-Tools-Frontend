@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, FileDown, Zap } from "lucide-react";
+import { ArrowRight, FileDown, Zap, Gift, ShieldCheck, Infinity as InfinityIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroIllustration from "@/assets/hero-illustration.jpg";
 
 const stats = [
-  { value: "100%", label: "Free to Use" },
-  { value: "0", label: "Data Collected" },
-  { value: "∞", label: "Files Processed" },
+  { value: "100%", label: "Free to Use", icon: Gift },
+  { value: "0", label: "Data Collected", icon: ShieldCheck },
+  { value: "∞", label: "Files Processed", icon: InfinityIcon },
 ];
 
 const BrandHero = () => {
@@ -87,14 +87,19 @@ const BrandHero = () => {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="mt-8 pt-6 border-t border-border/50"
             >
-              <div className="flex items-center justify-center lg:justify-start gap-8 sm:gap-12">
+              <div className="flex items-center justify-center lg:justify-start gap-6 sm:gap-10">
                 {stats.map((stat, index) => (
-                  <div key={index} className="text-center lg:text-left">
-                    <div className="text-2xl sm:text-3xl font-bold text-primary">
-                      {stat.value}
+                  <div key={index} className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                      <stat.icon className="h-5 w-5" />
                     </div>
-                    <div className="text-sm text-muted-foreground mt-1">
-                      {stat.label}
+                    <div className="text-left">
+                      <div className="text-xl sm:text-2xl font-bold text-primary">
+                        {stat.value}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        {stat.label}
+                      </div>
                     </div>
                   </div>
                 ))}
