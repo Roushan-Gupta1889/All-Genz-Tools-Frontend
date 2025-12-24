@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Mail, ArrowRight, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import contactIllustration from "@/assets/contact-illustration.png";
+import contactIllustration from "@/assets/contact-illustration.svg";
 
 const ContactSection = () => {
   return (
