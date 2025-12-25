@@ -28,6 +28,20 @@ const BrandValues = () => {
   return (
     <section className="border-y border-border/50 bg-card">
       <div className="container mx-auto max-w-5xl px-6 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            What Makes Us Different
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+            Experience the perfect blend of privacy, performance, and simplicity
+          </p>
+        </motion.div>
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {values.map((value, index) => (
             <motion.div

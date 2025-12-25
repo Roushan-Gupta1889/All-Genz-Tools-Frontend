@@ -18,7 +18,7 @@ const BrandCTA = () => {
             Ready to get started?
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Try our PDF compressor now. It's instant, free, and private.
+            Try our PDF compressor now. It's instant, free, and easy to use.
           </p>
 
           <div className="mt-10">

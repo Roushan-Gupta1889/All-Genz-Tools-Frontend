@@ -22,7 +22,7 @@ const UploadCard = ({ onFileSelect, isDragging, setIsDragging }: UploadCardProps
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     setIsDragging(false);
-    
+
     const files = e.dataTransfer.files;
     if (files.length > 0 && files[0].type === "application/pdf") {
       onFileSelect(files[0]);
@@ -47,11 +47,10 @@ const UploadCard = ({ onFileSelect, isDragging, setIsDragging }: UploadCardProps
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        className={`group relative flex min-h-[320px] cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed transition-all duration-300 ${
-          isDragging
+        className={`group relative flex min-h-[320px] cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed transition-all duration-300 ${isDragging
             ? "border-primary bg-primary/5 scale-[1.02]"
             : "border-border hover:border-primary/50 hover:bg-muted/50"
-        }`}
+          }`}
       >
         <input
           id="pdf-upload"
@@ -83,7 +82,7 @@ const UploadCard = ({ onFileSelect, isDragging, setIsDragging }: UploadCardProps
         </div>
 
         <p className="mt-6 text-xs text-muted-foreground">
-          Supports PDF files up to 100MB
+          Supports PDF files up to 50MB
         </p>
       </label>
     </motion.div>

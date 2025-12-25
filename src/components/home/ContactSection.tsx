@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, ArrowRight, Calendar } from "lucide-react";
+import { Mail, ArrowRight, Calendar, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import contactIllustration from "@/assets/contact-illustration.svg";
 
@@ -41,21 +41,22 @@ const ContactSection = () => {
             </h2>
 
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              We're always looking to build tools that solve real problems. 
-              Got an idea for a tool you wish existed? Want to report a bug or 
+              We're always looking to build tools that solve real problems.
+              Got an idea for a tool you wish existed? Want to report a bug or
               suggest an improvement? We'd love to hear from you.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button size="lg" className="group" asChild>
-                <a href="mailto:allgenztools@gmail.com">
+                <a href="https://wa.me/919341101889">
                   <Mail className="h-4 w-4" />
                   Get In Touch
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </Button>
+              
               <Button size="lg" variant="outline" asChild>
-                <a href="mailto:allgenztools@gmail.com?subject=Tool%20Suggestion">
+                <a href="mailto:allgenztool@gmail.com?subject=Tool%20Suggestion">
                   <Calendar className="h-4 w-4" />
                   Suggest a Tool
                 </a>
@@ -63,12 +64,12 @@ const ContactSection = () => {
             </div>
 
             <p className="mt-6 text-sm text-muted-foreground">
-              Or email us directly at{" "}
+              Or reach us directly at{" "}
               <a
-                href="mailto:allgenztools@gmail.com"
+                href="mailto:allgenztool@gmail.com"
                 className="text-primary hover:underline font-medium"
               >
-                allgenztools@gmail.com
+                allgenztool@gmail.com
               </a>
             </p>
           </motion.div>

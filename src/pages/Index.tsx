@@ -13,10 +13,10 @@ const Index = () => {
       <Header />
       <main className="flex-1">
         <BrandHero />
-        <BrandValues />
-        <BrandMission />
-        <ToolsShowcase />
         <BrandCTA />
+        <ToolsShowcase />
+        <BrandMission />
+        <BrandValues />
         <ContactSection />
       </main>
       <Footer />

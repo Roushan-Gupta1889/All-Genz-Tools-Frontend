@@ -1,21 +1,32 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, FileDown, Zap, Gift, ShieldCheck, Infinity as InfinityIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroIllustration from "@/assets/hero-illustration.jpg";
+import { useState, useEffect } from "react";
 
 const stats = [
   { value: "100%", label: "Free to Use", icon: Gift },
-  { value: "0", label: "Data Collected", icon: ShieldCheck },
-  { value: "∞", label: "Files Processed", icon: InfinityIcon },
+  { value: "0", label: "Data Collected", icon: ShieldCheck }
 ];
 
+const rotatingWords = ["Tools", "Utilities", "Features"];
+
 const BrandHero = () => {
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentWordIndex((prev) => (prev + 1) % rotatingWords.length);
+    }, 3000); // Change word every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
   return (
     <section className="relative overflow-x-hidden gradient-hero">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.08),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(var(--primary)/0.05),transparent_40%)]" />
-      
+
       <div className="container relative mx-auto max-w-6xl px-6 py-8 sm:py-12 lg:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left - Content */}
@@ -44,7 +55,21 @@ const BrandHero = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
             >
-              We Build <span className="text-primary">Tools</span>
+              We Provide{" "}
+              <span className="inline-block text-primary min-w-[200px] sm:min-w-[240px] lg:min-w-[280px]">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={currentWordIndex}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5 }}
+                    className="inline-block"
+                  >
+                    {rotatingWords[currentWordIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
               <br />
               That Users Love
             </motion.h1>
@@ -55,8 +80,8 @@ const BrandHero = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mt-6 text-lg leading-relaxed text-muted-foreground max-w-xl mx-auto lg:mx-0"
             >
-              Modern, privacy-first utilities designed for speed and simplicity. 
-              No accounts. No tracking. Just powerful tools at your fingertips.
+              Modern, privacy-first tools made for speed and simplicity.
+              No Login.No tracking.Just powerful tools at your fingertips.
             </motion.p>
 
             <motion.div
@@ -87,7 +112,7 @@ const BrandHero = () => {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="mt-8 pt-6 border-t border-border/50"
             >
-              <div className="grid grid-cols-3 gap-3 sm:flex sm:items-center sm:justify-center lg:justify-start sm:gap-10">
+              <div className="grid grid-cols-2 gap-12 sm:flex sm:items-center sm:justify-center lg:justify-start sm:gap-16">
                 {stats.map((stat, index) => (
                   <div
                     key={index}
@@ -117,7 +142,7 @@ const BrandHero = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative flex justify-center lg:justify-end"
           >
-            <motion.div 
+            <motion.div
               className="relative w-full max-w-md lg:max-w-lg"
               animate={{ y: [0, -8, 0] }}
               transition={{

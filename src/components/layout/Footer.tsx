@@ -26,7 +26,7 @@ const socialLinks = [
   { name: "Twitter", icon: Twitter, href: "#" },
   { name: "GitHub", icon: Github, href: "#" },
   { name: "LinkedIn", icon: Linkedin, href: "#" },
-  { name: "Email", icon: Mail, href: "mailto:hello@allgenztools.com" },
+  { name: "Email", icon: Mail, href: "mailto:allgenztool@gmail.com" },
 ];
 
 const Footer = () => {
@@ -42,7 +42,7 @@ const Footer = () => {
               <span className="text-lg font-semibold tracking-tight">All Genz Tools</span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Modern, privacy-first utilities designed for speed and simplicity. 
+              Modern, privacy-first utilities designed for speed and simplicity.
               No accounts. No tracking. Just powerful tools.
             </p>
             {/* Social Links */}
@@ -70,9 +70,8 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className={`text-sm transition-colors hover:text-foreground ${
-                      link.coming ? "text-muted-foreground/60" : "text-muted-foreground"
-                    }`}
+                    className={`text-sm transition-colors hover:text-foreground ${link.coming ? "text-muted-foreground/60" : "text-muted-foreground"
+                      }`}
                   >
                     {link.name}
                     {link.coming && (
@@ -96,9 +95,8 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className={`text-sm transition-colors hover:text-foreground ${
-                      link.coming ? "text-muted-foreground/60" : "text-muted-foreground"
-                    }`}
+                    className={`text-sm transition-colors hover:text-foreground ${link.coming ? "text-muted-foreground/60" : "text-muted-foreground"
+                      }`}
                   >
                     {link.name}
                     {link.coming && (
@@ -134,14 +132,14 @@ const Footer = () => {
 
         {/* Visitor Counter */}
         <div className="mt-12 flex flex-col items-center gap-2 border-t border-border/50 pt-8">
-          <p className="text-xs text-muted-foreground">Total Visitors</p>
-          <a href="https://www.freevisitorcounters.com/en/home/stats/id/1319187" target="_blank" rel="noopener noreferrer">
-            <img 
-              src="https://www.freevisitorcounters.com/en/counter/render/1319187/t/5" 
-              alt="Visitor Counter"
-              className="border-0"
-            />
-          </a>
+          <img
+            src="https://hitwebcounter.com/counter/counter.php?page=20387997&style=0006&nbdigits=6&type=page&initCount=0"
+            alt="Visit counter For Websites"
+            className="h-[30px] w-[200px] border-0"
+          />
+          <p className="text-xl font-semibold" style={{ color: '#1523da', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+            Visitor Counter
+          </p>
         </div>
 
         {/* Bottom Bar */}

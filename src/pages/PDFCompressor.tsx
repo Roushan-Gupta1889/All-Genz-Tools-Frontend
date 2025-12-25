@@ -1,6 +1,6 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Shield } from "lucide-react";
+import { Shield, AlertCircle } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ToolHero from "@/components/compressor/ToolHero";
@@ -9,59 +9,101 @@ import ToolHowItWorks from "@/components/compressor/ToolHowItWorks";
 import UploadCard from "@/components/compressor/UploadCard";
 import CompressionProgress from "@/components/compressor/CompressionProgress";
 import CompressionResult from "@/components/compressor/CompressionResult";
+import { compressPDF, APIError } from "@/lib/api.service";
+import type { CompressionQuality } from "@/lib/api.config";
+import { useToast } from "@/hooks/use-toast";
+import FileReadyCard from "@/components/compressor/FileReadyCard";
 
-type CompressionState = "idle" | "compressing" | "complete";
+type CompressionState = "idle" | "ready" | "compressing" | "complete" | "error";
 
 const PDFCompressor = () => {
+  const { toast } = useToast();
   const [state, setState] = useState<CompressionState>("idle");
   const [file, setFile] = useState<File | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [compressedBlob, setCompressedBlob] = useState<Blob | null>(null);
   const [compressedSize, setCompressedSize] = useState(0);
+  const [error, setError] = useState<string | null>(null);
+  const [quality, setQuality] = useState<CompressionQuality>("recommended");
 
   const handleFileSelect = useCallback((selectedFile: File) => {
     setFile(selectedFile);
-    setState("compressing");
-    setProgress(0);
+    setState("ready");
+    setError(null);
   }, []);
 
-  // Simulate compression progress
-  useEffect(() => {
-    if (state !== "compressing") return;
+  const handleCompress = useCallback(async () => {
+    if (!file) return;
 
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setState("complete");
-          // Simulate 40-70% compression
-          if (file) {
-            const compressionRatio = 0.3 + Math.random() * 0.3;
-            setCompressedSize(Math.round(file.size * compressionRatio));
-          }
-          return 100;
-        }
-        return prev + Math.random() * 15 + 5;
+    setState("compressing");
+    setProgress(0);
+    setError(null);
+
+    try {
+      // Call real API
+      const blob = await compressPDF(file, quality, (progressValue) => {
+        setProgress(progressValue);
       });
-    }, 200);
 
-    return () => clearInterval(interval);
-  }, [state, file]);
+      // Success - store compressed file
+      setCompressedBlob(blob);
+      setCompressedSize(blob.size);
+      setState("complete");
+
+      // Show toast notification
+      toast({
+        title: "Files are automatically deleted after processing",
+        description: "Your privacy is protected - no files are stored on our servers.",
+        className: "top-0 left-0 flex fixed md:max-w-[420px] md:top-4 md:left-4",
+      });
+    } catch (err) {
+      console.error('Compression failed:', err);
+      setState("error");
+
+      if (err instanceof APIError) {
+        // Handle specific API errors
+        if (err.statusCode === 429) {
+          const minutes = Math.ceil((err.retryAfter || 600) / 60);
+          setError(`Rate limit exceeded. Please try again in ${minutes} minutes.`);
+        } else if (err.statusCode === 413) {
+          setError('File size is too large. Maximum file size is 50 MB.');
+        } else if (err.statusCode === 400) {
+          setError(err.message || 'Invalid file. Please upload a valid PDF.');
+        } else if (err.statusCode === 0) {
+          setError('Unable to connect to the server. Please check your internet connection and try again.');
+        } else {
+          setError(err.message || 'Compression failed. Please try again.');
+        }
+      } else {
+        setError('An unexpected error occurred. Please try again.');
+      }
+    }
+  }, [file, quality, toast]);
 
   const handleDownload = useCallback(() => {
-    if (file) {
+    if (compressedBlob && file) {
+      const url = URL.createObjectURL(compressedBlob);
       const link = document.createElement("a");
-      link.href = URL.createObjectURL(file);
+      link.href = url;
       link.download = `compressed_${file.name}`;
       link.click();
+      URL.revokeObjectURL(url);
     }
-  }, [file]);
+  }, [compressedBlob, file]);
+
+  const handleTryStrongQuality = useCallback(() => {
+    setQuality("strong");
+    setState("ready");
+  }, []);
 
   const handleReset = useCallback(() => {
-    setState("idle");
     setFile(null);
+    setState("idle");
     setProgress(0);
+    setCompressedBlob(null);
     setCompressedSize(0);
+    setError(null);
   }, []);
 
   return (
@@ -86,9 +128,21 @@ const PDFCompressor = () => {
                 />
               )}
 
+              {state === "ready" && file && (
+                <FileReadyCard
+                  fileName={file.name}
+                  fileSize={file.size}
+                  quality={quality}
+                  onQualityChange={setQuality}
+                  onCompress={handleCompress}
+                  onCancel={handleReset}
+                />
+              )}
+
               {state === "compressing" && file && (
                 <CompressionProgress
                   fileName={file.name}
+                  fileSize={file.size}
                   progress={Math.min(Math.round(progress), 99)}
                 />
               )}
@@ -98,9 +152,37 @@ const PDFCompressor = () => {
                   fileName={file.name}
                   originalSize={file.size}
                   compressedSize={compressedSize}
+                  quality={quality}
                   onDownload={handleDownload}
                   onReset={handleReset}
+                  onTryStrongQuality={handleTryStrongQuality}
                 />
+              )}
+
+              {state === "error" && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="rounded-2xl border-2 border-destructive/20 bg-destructive/5 p-8"
+                >
+                  <div className="flex items-start gap-4">
+                    <AlertCircle className="h-6 w-6 text-destructive flex-shrink-0 mt-1" />
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-destructive mb-2">
+                        Compression Failed
+                      </h3>
+                      <p className="text-sm text-muted-foreground mb-6">
+                        {error}
+                      </p>
+                      <button
+                        onClick={handleReset}
+                        className="px-6 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                      >
+                        Try Again
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
               )}
             </div>
 
@@ -112,7 +194,7 @@ const PDFCompressor = () => {
               className="mt-12 flex items-center justify-center gap-2 text-sm text-muted-foreground"
             >
               <Shield className="h-4 w-4" />
-              <span>Your files are processed locally and never uploaded to our servers</span>
+              <span>Your files are processed securely. Files are automatically deleted after processing.</span>
             </motion.div>
           </div>
         </section>
