@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { FileDown, Mail, Twitter, Github, Linkedin, Heart } from "lucide-react";
+import { Mail, Twitter, Github, Linkedin, Heart } from "lucide-react";
+import Logo from "@/assets/Logo.png";
 
 const footerLinks = {
   tools: [
@@ -37,9 +38,7 @@ const Footer = () => {
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-1">
             <Link to="/" className="flex items-center gap-2 transition-opacity hover:opacity-80">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                <FileDown className="h-4 w-4 text-primary-foreground" />
-              </div>
+              <img src={Logo} alt="All Genz Tools Logo" className="h-8 w-8 rounded-lg" />
               <span className="text-lg font-semibold tracking-tight">All Genz Tools</span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
