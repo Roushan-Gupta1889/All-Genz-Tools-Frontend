@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { FileDown, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
+import Logo from "@/assets/Logo.png";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -35,9 +36,7 @@ const Header = () => {
       <div className="container mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 transition-opacity hover:opacity-80">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-            <FileDown className="h-4 w-4 text-primary-foreground" />
-          </div>
+          <img src={Logo} alt="All Genz Tools Logo" className="h-8 w-8 rounded-lg" />
           <span className="text-lg font-semibold tracking-tight">All Genz Tools</span>
         </Link>
 
