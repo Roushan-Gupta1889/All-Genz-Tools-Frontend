@@ -127,7 +127,7 @@ export async function compressPDF(
         // Network or other errors
         if (error instanceof TypeError) {
             throw new APIError(
-                'Unable to connect to the server. Please check your internet connection.',
+                'Unable to connect to the server. The server may be waking up (takes 30-60 seconds on free hosting). Please wait and try again.',
                 0
             );
         }
