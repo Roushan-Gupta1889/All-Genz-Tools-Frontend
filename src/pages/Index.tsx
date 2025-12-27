@@ -6,6 +6,7 @@ import BrandMission from "@/components/home/BrandMission";
 import ToolsShowcase from "@/components/home/ToolsShowcase";
 import ContactSection from "@/components/home/ContactSection";
 import BrandCTA from "@/components/home/BrandCTA";
+import FAQ from "@/components/FAQ";
 
 const Index = () => {
   return (
@@ -17,6 +18,7 @@ const Index = () => {
         <ToolsShowcase />
         <BrandMission />
         <BrandValues />
+        <FAQ />
         <ContactSection />
       </main>
       <Footer />
