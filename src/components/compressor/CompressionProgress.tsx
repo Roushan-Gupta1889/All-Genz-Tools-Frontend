@@ -64,7 +64,7 @@ const CompressionProgress = ({ fileName, progress, fileSize }: CompressionProgre
     } else if (elapsedTime < stages.stage5) {
       setStatusMessage("Almost done, finalizing...");
     } else {
-      setStatusMessage("Processing large file, please wait...");
+      setStatusMessage("Processing file, please wait...");
     }
   }, [elapsedTime, stages]);
 
