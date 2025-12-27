@@ -11,14 +11,13 @@ const footerLinks = {
   ],
   company: [
     { name: "About Us", href: "/#about" },
-    { name: "Our Mission", href: "/#about" },
+    { name: "Our Mission", href: "/#mission" },
     { name: "Contact", href: "/#contact" },
     { name: "Blog", href: "#", coming: true },
   ],
   legal: [
-    { name: "Privacy Policy", href: "#" },
-    { name: "Terms of Service", href: "#" },
-    { name: "Cookie Policy", href: "#" },
+    { name: "Privacy Policy", href: "/privacy-policy" },
+    { name: "Terms of Service", href: "/terms-of-service" },
   ],
 };
 

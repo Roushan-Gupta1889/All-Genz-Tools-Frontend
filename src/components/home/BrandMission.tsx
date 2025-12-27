@@ -45,11 +45,12 @@ const BrandMission = () => {
           {values.map((item, index) => (
             <motion.div
               key={item.title}
+              id={index === 0 ? "mission" : undefined}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="relative group"
+              className="relative group scroll-mt-20"
             >
               <div className="gradient-card rounded-2xl border border-border/50 p-8 shadow-soft transition-all duration-300 hover:shadow-elevated hover:border-primary/20 h-full">
                 <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 transition-colors group-hover:bg-primary/15">
