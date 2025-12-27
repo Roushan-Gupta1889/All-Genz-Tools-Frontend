@@ -20,6 +20,7 @@ const ContactSection = () => {
               src={contactIllustration}
               alt="Contact illustration"
               className="w-full max-w-md"
+              loading="lazy"
             />
           </motion.div>
 
@@ -54,7 +55,7 @@ const ContactSection = () => {
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </Button>
-              
+
               <Button size="lg" variant="outline" asChild>
                 <a href="mailto:allgenztool@gmail.com?subject=Tool%20Suggestion">
                   <Calendar className="h-4 w-4" />

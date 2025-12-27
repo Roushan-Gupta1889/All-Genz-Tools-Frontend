@@ -156,6 +156,10 @@ const BrandHero = () => {
                 src={heroIllustration}
                 alt="All Genz Tools hero illustration showing digital tools"
                 className="relative mx-auto h-[320px] sm:h-[420px] lg:h-[520px] w-auto max-w-full object-contain drop-shadow-2xl"
+                fetchPriority="high"
+                loading="eager"
+                width="420"
+                height="520"
               />
             </motion.div>
           </motion.div>

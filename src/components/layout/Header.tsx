@@ -37,7 +37,7 @@ const Header = () => {
       <div className="container mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         {/* Logo - Left */}
         <Link to="/" className="flex items-center gap-2 transition-opacity hover:opacity-80 flex-shrink-0">
-          <img src={Logo} alt="All Genz Tools Logo" className="h-8 w-8 rounded-lg" />
+          <img src={Logo} alt="All Genz Tools Logo" className="h-8 w-8 rounded-lg" width="32" height="32" />
           <span className="text-lg font-semibold tracking-tight">All Genz Tools</span>
         </Link>
 
