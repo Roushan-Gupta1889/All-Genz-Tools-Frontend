@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, FileDown, Zap, Gift, ShieldCheck, Infinity as InfinityIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroIllustration from "@/assets/hero-illustration.jpg";
+import heroIllustration from "@/assets/hero-illustration.webp";
 import { useState, useEffect } from "react";
 
 const stats = [

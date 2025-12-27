@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, FileDown } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
-import Logo from "@/assets/Logo.png";
+import Logo from "@/assets/Logo.webp";
 
 const navLinks = [
   { name: "Home", path: "/" },

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Twitter, Github, Linkedin, Heart } from "lucide-react";
-import Logo from "@/assets/Logo.png";
+import Logo from "@/assets/Logo.webp";
 
 const footerLinks = {
   tools: [
