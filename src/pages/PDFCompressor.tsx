@@ -109,6 +109,12 @@ const PDFCompressor = () => {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <SEO
+        title="Free PDF Compressor - Reduce PDF Size Online | All Genz Tools"
+        description="Compress PDF files online for free. Reduce file size up to 90% without losing quality. Fast, secure, privacy-first compression. No signup required. Try our PDF compressor now!"
+        keywords="compress PDF online, PDF compressor, reduce PDF size, shrink PDF, PDF optimizer, compress PDF free, PDF file size reducer, online PDF compression, free PDF tools, compress PDF without losing quality"
+        canonical="https://all-genz-tools-frontend.vercel.app/pdf-compressor"
+      />
       <Header />
 
       <main className="flex-1">
@@ -175,19 +181,28 @@ const PDFCompressor = () => {
                       <p className="text-sm text-muted-foreground mb-6">
                         {error}
                       </p>
-                  Try Again
-                </button>
-              </div>
+
+                      <button
+                        onClick={handleReset}
+                        className="inline-flex items-center rounded-lg bg-destructive px-4 py-2 text-sm font-medium text-white hover:bg-destructive/90 transition"
+                      >
+                        Try Again
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
             </div>
-        <ToolTrustStrip />
-
-        {/* How It Works */}
-              <ToolHowItWorks />
-            </main>
-
-            <Footer />
           </div>
-          );
+        </section>
+
+        <ToolTrustStrip />
+        <ToolHowItWorks />
+      </main>
+
+      <Footer />
+    </div>
+  );
 };
 
-          export default PDFCompressor;
+export default PDFCompressor;
