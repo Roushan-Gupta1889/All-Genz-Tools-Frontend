@@ -13,6 +13,7 @@ import { compressPDF, APIError } from "@/lib/api.service";
 import type { CompressionQuality } from "@/lib/api.config";
 import { useToast } from "@/hooks/use-toast";
 import FileReadyCard from "@/components/compressor/FileReadyCard";
+import { SEO } from "@/components/SEO";
 
 type CompressionState = "idle" | "ready" | "compressing" | "complete" | "error";
 
@@ -174,41 +175,19 @@ const PDFCompressor = () => {
                       <p className="text-sm text-muted-foreground mb-6">
                         {error}
                       </p>
-                      <button
-                        onClick={handleReset}
-                        className="px-6 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
-                      >
-                        Try Again
-                      </button>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
+                  Try Again
+                </button>
+              </div>
             </div>
-
-            {/* Privacy Note */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="mt-12 flex items-center justify-center gap-2 text-sm text-muted-foreground"
-            >
-              <Shield className="h-4 w-4" />
-              <span>Your files are processed securely. Files are automatically deleted after processing.</span>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Trust Strip */}
         <ToolTrustStrip />
 
         {/* How It Works */}
-        <ToolHowItWorks />
-      </main>
+              <ToolHowItWorks />
+            </main>
 
-      <Footer />
-    </div>
-  );
+            <Footer />
+          </div>
+          );
 };
 
-export default PDFCompressor;
+          export default PDFCompressor;
